@@ -1,0 +1,3 @@
+class GooseMod2 {
+    
+}
