@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Goose</title>
     <script src="js/goose.js"></script>
+</head>
+<body onload="summonGoose()">
+    <a>Loading Goose...</a>
+</body>
+<footer>
     <script>
-    function summonGoose() {
         var goose = new Goose("Nathan's Goose");
         var controller = new GooseController(goose);
         goose.spawnGoose();
@@ -28,10 +32,6 @@
         
         setInterval(loop, 50);
         setInterval(loop2, 15000);
-    }
     </script>
-</head>
-<body onload="summonGoose()">
-    <a>Loading Goose...</a>
-</body>
+</footer>
 </html>
