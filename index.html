@@ -6,6 +6,7 @@
     <title>Goose</title>
     <script src="js/goose.js"></script>
     <script>
+    function summonGoose() {
         var goose = new Goose("Nathan's Goose");
         var controller = new GooseController(goose);
         goose.spawnGoose();
@@ -27,9 +28,10 @@
         
         setInterval(loop, 50);
         setInterval(loop2, 15000);
+    }
     </script>
 </head>
-<body>
+<body onload="summonGoose()">
     <a>Loading Goose...</a>
 </body>
 </html>
