@@ -6,12 +6,11 @@
     <title>Goose</title>
     <script src="goose.js"></script>
     <script>
-        var goose = new Goose("Emily's Goose");
+        var goose = new Goose("Nathan's Goose");
         var controller = new GooseController(goose);
         goose.spawnGoose();
         controller.moveRand();
         addEventListener("mousemove", controller.__updateMousePos, false);
-        //controller.start(); - adding soon
     
         function loop() {
             goose.goToYByOne(goose.name);
@@ -20,17 +19,14 @@
             controller.shouldMove();
             goose.chaseMouse();
             goose.main();
-            //controller.updateMousePos(); - adding soon
         }
         
         function loop2() {
             goose.shouldChaseMouse();
-            //controller.stealMouse(); - adding soon
         }
         
         setInterval(loop, 50);
         setInterval(loop2, 15000);
-        //Almost 500 lines of code!
     </script>
 </head>
 <body>
