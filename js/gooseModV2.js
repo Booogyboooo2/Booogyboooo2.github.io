@@ -1,3 +1,3 @@
-class GooseMod2 {
-    
+class GooseModV2 {
+
 }
