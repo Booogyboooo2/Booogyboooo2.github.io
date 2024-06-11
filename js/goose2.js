@@ -473,7 +473,7 @@ class TestMod extends GooseMod2 {
     }
 
     onTick() {
-        //console.log("TestMod");
+        
     }
 }
 
@@ -486,7 +486,7 @@ class ModTest extends GooseMod2 {
     }
 
     onTick() {
-        //console.log("ModTest");
+        
     }
 }
 
