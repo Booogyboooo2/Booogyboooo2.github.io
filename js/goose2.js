@@ -400,15 +400,15 @@ class GooseController {
                 while (I1 < mod1.methods.length) {
                 const originalMethod = GooseV2.prototype[mod1.methods[I1]].toString().slice(GooseV2.prototype[mod1.methods[I1]].toString().match("{").index + 1).replaceAll("\n", "").replaceAll(" ", "").slice(0, -1);
                 GooseV2.prototype[mod1.methods[I1]] = function () {
-                    eval("eval(originalMethod + mod1.code[ " + I1 + " ]");
+                    eval(new StringHolder("eval(originalMethod + mod1.code[ " + I1 + " ]").string);
                 }
                 I1++;
             }
         }
         if (mod1.getShouldOverride()) {
             while (I2 < mod1.methods2.length) {
-                GooseV2.prototype[mod1.methods2[I2]] = function () { 
-                    eval("eval(mod1.code2[" + I2 + "])");
+                GooseV2.prototype[mod1.methods2[I2]] = function () {
+                    eval(new StringHolder("eval(mod1.code2[" + I2 + "])").string)
                 }
                 I2++;
             }
@@ -486,5 +486,11 @@ class ModTest extends GooseMod2 {
 
     onTick() {
         //console.log("ModTest");
+    }
+}
+
+class StringHolder {
+    constructor(str) {
+        this.string = str;
     }
 }
