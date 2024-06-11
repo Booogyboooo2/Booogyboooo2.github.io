@@ -422,7 +422,7 @@ class GooseController {
     }
 }
 
-//Only one override and inject per mod (TODO: fix this)
+//Only one override and inject per mod (TODO: fix this) | GooseV2.prototype["flipY"].toString().split("function () {\n")[1].replaceAll(" ", "").replaceAll("\n", "").slice(0, -1)
 class GooseMod2 {
     constructor() {
         this.methods = [];
