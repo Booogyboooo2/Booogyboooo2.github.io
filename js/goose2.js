@@ -422,7 +422,7 @@ class GooseController {
     }
 }
 
-//Only one override and inject per mod (TODO: fix this) | onTick Working
+//Only one override and inject per mod (TODO: fix this)
 class GooseMod2 {
     constructor() {
         this.methods = ["none"];
