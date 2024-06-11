@@ -408,10 +408,10 @@ class GooseController {
         }
         if (mod1.getShouldOverride()) {
             while (I2 < mod1.methods2.length) {
-                I2++;
                 GooseV2.prototype[mod1.methods2[I2]] = function () {
                     eval(mod1.code2[I2]);
                 }
+                I2++;
             }
         }
         const originalMain = GooseV2.prototype.main;
