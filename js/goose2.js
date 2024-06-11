@@ -400,15 +400,15 @@ class GooseController {
                 while (I1 < mod1.methods.length) {
                 const originalMethod = GooseV2.prototype[mod1.methods[I1]].toString().slice(GooseV2.prototype[mod1.methods[I1]].toString().match("{").index + 1).replaceAll("\n", "").replaceAll(" ", "").slice(0, -1);
                 GooseV2.prototype[mod1.methods[I1]] = function () {
-                    originalMethod + mod1.code[I1].toString();
+                    eval("eval(originalMethod + mod1.code[ " + I1 + " ].toString()");
                 }
                 I1++;
             }
         }
         if (mod1.getShouldOverride()) {
             while (I2 < mod1.methods2.length) {
-                GooseV2.prototype[mod1.methods2[I2]] = function () {
-                    mod1.code2[I2].toString();
+                GooseV2.prototype[mod1.methods2[I2]] = function () { 
+                    eval("eval(mod1.code2[" + I2 + "].toString())");
                 }
                 I2++;
             }
@@ -482,7 +482,6 @@ class ModTest extends GooseMod2 {
         super.inject("flipY", 'console.log("Inject2_1")');
         super.inject("flipY", 'console.log("Inject2_2")');
         super.override("flipX", 'console.log("Override2_1")');
-        super.override("exists", 'console.log("Override2_2")');
     }
 
     onTick() {
