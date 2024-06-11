@@ -462,3 +462,31 @@ class GooseMod2 {
     }
     
 }
+
+class TestMod extends GooseMod2 {
+    onEnable() {
+        console.log("Enabled...1");
+        super.inject("flipY", 'console.log("Inject1_1")');
+        super.inject("flipY", 'console.log("Inject1_2")');
+        super.override("flipX", 'console.log("Override1_1")');
+        super.override("telportTo", 'console.log("Override1_2")');
+    }
+
+    onTick() {
+        console.log("TestMod");
+    }
+}
+
+class ModTest extends GooseMod2 {
+    onEnable() {
+        console.log("Enabled...2");
+        super.inject("flipY", 'console.log("Inject2_1")');
+        super.inject("flipY", 'console.log("Inject2_2")');
+        super.override("flipX", 'console.log("Override2_1")');
+        super.override("exists", 'console.log("Override2_2")');
+    }
+
+    onTick() {
+        console.log("TestMod");
+    }
+}
