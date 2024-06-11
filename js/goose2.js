@@ -59,7 +59,7 @@ class GooseV2 {
         return this.__x();
     }
     
-    getY(id) {
+    getY() {
         return this.__y();
     }
     
