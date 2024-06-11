@@ -425,11 +425,11 @@ class GooseController {
 //Only one override and inject per mod (TODO: fix this)
 class GooseMod2 {
     constructor() {
-        this.methods = ["none"];
-        this.code = ["none"];
+        this.methods = [];
+        this.code = [];
         this.shouldInject = false;
-        this.methods2 = ["none"];
-        this.code2 = ["none"];
+        this.methods2 = [];
+        this.code2 = [];
         this.shouldOverride = false;
     }
     
