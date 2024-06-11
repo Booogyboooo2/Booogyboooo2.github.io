@@ -453,7 +453,7 @@ class GooseMod2 {
     
     override(method, code) {
         this.methods2[this.methods2.length] = method;
-        this.code2[this.code.length] = code;
+        this.code2[this.code2.length] = code;
         this.shouldOverride = true;
     }
     
