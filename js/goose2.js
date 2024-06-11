@@ -398,10 +398,9 @@ class GooseController {
         mod1.onEnable();
             if (mod1.getShouldInject()) {
                 while (I1 < mod1.methods.length) {
-                const originalMethod = GooseV2.prototype[mod1.methods[I1]];
+                const originalMethod = GooseV2.prototype[mod1.methods[I1]].toString().split("function () {\n")[1].replaceAll(" ", "").replaceAll("\n", "").slice(0, -1);
                 GooseV2.prototype[mod1.methods[I1]] = function () {
-                    originalMethod.call(this);
-                    eval(mod1.code[I1]);
+                    originalMethod + mod1.code[I1].toString();
                 }
                 I1++;
             }
@@ -409,20 +408,20 @@ class GooseController {
         if (mod1.getShouldOverride()) {
             while (I2 < mod1.methods2.length) {
                 GooseV2.prototype[mod1.methods2[I2]] = function () {
-                    eval(mod1.code2[I2]);
+                    mod1.code2[I2].toString();
                 }
                 I2++;
             }
         }
         const originalMain = GooseV2.prototype.main;
         GooseV2.prototype.main = function () {
-             originalMain.call(this); 
+             originalMain.call(this);
              mod1.onTick();
         }
     }
 }
 
-//Only one override and inject per mod (TODO: fix this) | GooseV2.prototype["flipY"].toString().split("function () {\n")[1].replaceAll(" ", "").replaceAll("\n", "").slice(0, -1)
+//Only one override and inject per mod (TODO: fix this)
 class GooseMod2 {
     constructor() {
         this.methods = [];
