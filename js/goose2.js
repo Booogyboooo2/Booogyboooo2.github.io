@@ -1,3 +1,4 @@
+//This stupid goose is driving me insane
 class GooseV2 {
     constructor(name) {
         this.mods = [];
