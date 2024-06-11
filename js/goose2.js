@@ -398,8 +398,8 @@ class GooseController {
         mod1.onEnable();
             if (mod1.getShouldInject()) {
                 while (I1 < mod1.methods.length) {
-                const originalMethod = Goose.prototype[mod1.methods[I1]];
-                Goose.prototype[mod1.methods[I1]] = function () {
+                const originalMethod = GooseV2.prototype[mod1.methods[I1]];
+                GooseV2.prototype[mod1.methods[I1]] = function () {
                     originalMethod.call(this);
                     eval(mod1.code[I1]);
                 }
@@ -409,13 +409,13 @@ class GooseController {
         if (mod1.getShouldOverride()) {
             while (I2 < mod1.methods2.length) {
                 I2++;
-                Goose.prototype[mod1.methods2[I2]] = function () {
+                GooseV2.prototype[mod1.methods2[I2]] = function () {
                     eval(mod1.code2[I2]);
                 }
             }
         }
-        const originalMain = Goose.prototype.main;
-        Goose.prototype.main = function () {
+        const originalMain = GooseV2.prototype.main;
+        GooseV2.prototype.main = function () {
              originalMain.call(this); 
              mod1.onTick();
         }
