@@ -41,14 +41,14 @@ class Game {
 
 class Replay {
     constructor() {
-        this.actions = [];
+        this.actions = [""];
         this.start = null;
         this.end = null;
         this.len = null;
     }
 
     static addAction(action) {
-        this.actions[this.actions.length] = action;
+        this.actions[this.actions.length - 1] = action;
     }
 
     static setStart(time) {
