@@ -25,8 +25,8 @@ class Game {
         var elem = document.getElementById("game");
         var i = 0;
         var e = 0;
-        while (i < this.height) {
-            while (e < this.width) {
+        while (i <= this.height) {
+            while (e <= this.width) {
                 elem.innerHTML += "<input id='" + i + "_" + e + "' type='checkbox'>" ;
                 document.getElementById(i + "_" + e).addEventListener("click", createAction(i + "_" + e, document.getElementById(i + "_" + e).checked, new Date().getTime()));
                 e++;
