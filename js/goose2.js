@@ -473,7 +473,7 @@ class MethodModif {
 
     static injectMethod(method, code) {
         try {
-            var prev = GooseV2.prototype[method].toString().replaceAll("\n", "").replaceAll(" ", "").replace(method + "(){", "").slice(0, -1);
+            var prev = GooseV2.prototype[method].toString().replaceAll("\n", "").replaceAll(" ", "").replace(method + "(){", "").slice(0, -1).replaceAll("elseif", "else if");
             console.log(prev.toString());
             eval("GooseV2.prototype." + method + " = function () { " + prev + code + "}");
             console.log("Set code too: GooseV2.prototype." + method + " = function () { " + prev + code + "}");
