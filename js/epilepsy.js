@@ -39,6 +39,6 @@ function run() {
         }
     }
 
-    setInterval(name, 333);
-    setInterval(zoomInOut, 33);
+    setInterval(name, 50);
+    //setInterval(zoomInOut, 33);
 }
