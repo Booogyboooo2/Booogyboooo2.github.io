@@ -474,11 +474,12 @@ class MethodModif {
     static injectMethod(method, code) {
         try {
             var prev = GooseV2.prototype[method].toString();
-            console.log(prev);
+            console.log(prev.toString());
             eval("GooseV2.prototype." + method + " = function () { " + prev + code + "}");
             console.log("Set code too: GooseV2.prototype." + method + " = function () { " + prev + code + "}");
         } catch (error) {
             console.log("Error (" + error + ") while trying to inject into method (" + method + ")");
+            console.log("Set code too: GooseV2.prototype." + method + " = function () { " + prev + code + "}");
         }
     }
 }
