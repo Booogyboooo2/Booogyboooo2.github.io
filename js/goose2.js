@@ -465,7 +465,7 @@ class ModTest extends GooseMod2 {
 class MethodModif {
     static overrideMethod(method, code) {
         try {
-            eval("GooseV2.prototype[" + method + "] = function () {" + code + "}");
+            eval("GooseV2.prototype.[" + method + "] = function () {" + code + "}");
         } catch (error) {
             console.log("Error (" + error + ") while trying to override method (" + method + ")");
         }
@@ -475,8 +475,8 @@ class MethodModif {
         try {
             var prev = GooseV2.prototype[method].toString();
             console.log(prev);
-            eval("GooseV2.prototype[" + method + "] = function () { " + prev + code + "}");
-            console.log("Set code too: GooseV2.prototype[" + method + "] = function () { " + prev + code + "}");
+            eval("GooseV2.prototype.[" + method + "] = function () { " + prev + code + "}");
+            console.log("Set code too: GooseV2.prototype.[" + method + "] = function () { " + prev + code + "}");
         } catch (error) {
             console.log("Error (" + error + ") while trying to inject into method (" + method + ")");
         }
