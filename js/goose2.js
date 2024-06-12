@@ -400,7 +400,7 @@ class GooseController {
     }
 }
 
-//(TODO: fix this)
+//(TODO: Almost Done)
 class GooseMod2 {
     
     constructor(goose) {
