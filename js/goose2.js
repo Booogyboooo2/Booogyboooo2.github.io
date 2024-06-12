@@ -391,48 +391,22 @@ class GooseController {
     }
     
     loadMod(mod) {
-        var I1 = 0;
-        var I2 = 0;
-
-        const mod1 = new mod();
-        this.goose.mods[this.goose.mods.length] = mod1;
-        mod1.onEnable();
-            if (mod1.getShouldInject()) {
-                while (I1 < mod1.methods.length) {
-                const originalMethod = GooseV2.prototype[mod1.methods[I1]].toString().slice(GooseV2.prototype[mod1.methods[I1]].toString().match("{").index + 1).replaceAll("\n", "").replaceAll(" ", "").slice(0, -1);
-                GooseV2.prototype[mod1.methods[I1]] = function () {
-                    eval(new StringHolder("eval(originalMethod + mod1.code[ " + I1 + " ]").string);
-                }
-                I1++;
-            }
-        }
-        if (mod1.getShouldOverride()) {
-            while (I2 < mod1.methods2.length) {
-                GooseV2.prototype[mod1.methods2[I2]] = function () {
-                    eval(new StringHolder("eval(mod1.code2[" + I2 + "])").string)
-                }
-                I2++;
-            }
-        }
+        new mod().onEnable();
         const originalMain = GooseV2.prototype.main;
         GooseV2.prototype.main = function () {
              originalMain.call(this);
-             mod1.onTick();
+             new mod().onTick();
         }
     }
 }
 
-//Only one override and inject per mod (TODO: fix this)
+//(TODO: fix this)
 class GooseMod2 {
-    constructor() {
-        this.methods = [];
-        this.code = [];
-        this.shouldInject = false;
-        this.methods2 = [];
-        this.code2 = [];
-        this.shouldOverride = false;
-    }
     
+    constructor(goose) {
+        this.goose = goose;
+    }
+
     onEnable() {
         
     }
@@ -442,28 +416,21 @@ class GooseMod2 {
     }
     
     inject(method, code) {
-        this.methods[this.methods.length] = method;
-        this.code[this.code.length] = code;
-        this.shouldInject = true;
-    }
-    
-    getShouldInject() {
-        return this.shouldInject;
+        MethodModif.injectMethod(method, code);
     }
     
     override(method, code) {
-        this.methods2[this.methods2.length] = method;
-        this.code2[this.code2.length] = code;
-        this.shouldOverride = true;
-    }
-    
-    getShouldOverride() {
-        return this.shouldOverride;
+        MethodModif.overrideMethod(method, code);
     }
     
 }
 
 class TestMod extends GooseMod2 {
+
+    constructor(goose) {
+        super(goose);
+    }
+
     onEnable() {
         console.log("Enabled...1");
         super.inject("flipY", 'console.log("Inject1_1")');
@@ -478,6 +445,11 @@ class TestMod extends GooseMod2 {
 }
 
 class ModTest extends GooseMod2 {
+
+    constructor(goose) {
+        super(goose);
+    }
+
     onEnable() {
         console.log("Enabled...2");
         super.inject("flipY", 'console.log("Inject2_1")');
@@ -490,8 +462,23 @@ class ModTest extends GooseMod2 {
     }
 }
 
-class StringHolder {
-    constructor(str) {
-        this.string = str;
+class MethodModif {
+    static overrideMethod(method, code) {
+        try {
+            eval("GooseV2.prototype[" + method + "] = function () {" + code + "}");
+        } catch (error) {
+            console.log("Error (" + error + ") while trying to override method (" + method + ")");
+        }
+    }
+
+    static injectMethod(method, code) {
+        try {
+            var prev = GooseV2.prototype[method].toString();
+            console.log(prev);
+            eval("GooseV2.prototype[" + method + "] = function () { " + prev + code + "}");
+            console.log("Set code too: GooseV2.prototype[" + method + "] = function () { " + prev + code + "}");
+        } catch (error) {
+            console.log("Error (" + error + ") while trying to inject into method (" + method + ")");
+        }
     }
 }
