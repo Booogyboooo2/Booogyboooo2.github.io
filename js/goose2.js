@@ -394,8 +394,8 @@ class GooseController {
         new mod().onEnable();
         const originalMain = GooseV2.prototype.main;
         GooseV2.prototype.main = function () {
-             originalMain.call(this);
-             new mod().onTick();
+            originalMain.call(this);
+            new mod().onTick();
         }
     }
 }
