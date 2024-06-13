@@ -17,5 +17,5 @@ function remove(index) {
 
 function gen() {
     var code = document.getElementById("preview_wrapper").innerHTML;
-    alert(code);
+    document.getElementById("res").innerHTML = code;
 }
