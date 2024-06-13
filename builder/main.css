@@ -1,0 +1,54 @@
+#main {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+#menu {
+    margin-left: 0;
+    margin-right: 75%;
+    border: solid;
+    height: 100%;
+    width: 25%;
+    display: table-cell;
+    background-color: dimgrey;
+    font-family: "Madimi One", sans-serif;
+    color: gray;
+}
+
+#add {
+    margin-top: 5px;
+    visibility: initial;
+}
+
+h2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+input {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+button {
+    background-color: gray;
+    border-radius: 10px;
+    font-family: inherit;
+}
+
+#export {
+    visibility: hidden;
+}
+
+#preview_wrapper {
+    margin-left: 26%;
+    margin-right: 0;
+    border-top: solid;
+    border-bottom: solid;
+    border-right: solid;
+    height: 100%;
+    width: 75%;
+    display: table-cell;
+    border-color: gray;
+}
