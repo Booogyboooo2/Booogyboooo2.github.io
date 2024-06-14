@@ -40,7 +40,7 @@ class Game {
 
 class Replay {
 
-    actions = [];
+    actions = new Array();
     start = null;
     end = null;
     len = null;
