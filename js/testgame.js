@@ -40,7 +40,7 @@ class Game {
 
 class Replay {
 
-    actions = new Array();
+    actions = [""];
     start = null;
     end = null;
     len = null;
@@ -61,7 +61,7 @@ class Replay {
     static startReplay() {
         Replay.len = Replay.end - start;
         while (len > (Replay.end - new Date().getTime())) {
-            var i = 0;
+            var i = 1;
             while (i < Replay.actions.length) {
                 if (Replay.actions[i].time <= (Replay.end - new Date().getTime()) && Replay.actions[i].ran == false) {
                     document.getElementById(Replay.actions[i].id).checked = Replay.actions[i].checked;
@@ -69,7 +69,7 @@ class Replay {
                 }
                 i++;
             }
-            var i = 0;
+            var i = 1;
         }
     }
 }
