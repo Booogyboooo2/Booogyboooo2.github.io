@@ -37,33 +37,33 @@ class Game {
 }
 
 class Replay {
-    constructor() {
-        actions = [];
-        start = null;
-        end = null;
-        len = null;
-    }
+
+    actions = [];
+    start = null;
+    end = null;
+    len = null;
+
 
     static addAction(action) {
-        actions[actions.length] = action;
+        Replay.actions[Replay.actions.length] = action;
     }
 
     static setStart(time) {
-        start = time;
+        Replay.start = time;
     }
 
     static setEnd(time) {
-        end = time;
+        Replay.end = time;
     }
 
     static startReplay() {
-        len = end - start;
-        while (len > (end - new Date().getTime())) {
+        Replay.len = Replay.end - start;
+        while (len > (Replay.end - new Date().getTime())) {
             var i = 0;
-            while (i < action.length) {
-                if (action[i].time <= (end - new Date().getTime()) && action[i].ran == false) {
-                    document.getElementById(action[i].id).checked = action[i].checked;
-                    action[i].ran = true;
+            while (i < Replay.actions.length) {
+                if (Replay.actions[i].time <= (Replay.end - new Date().getTime()) && Replay.actions[i].ran == false) {
+                    document.getElementById(Replay.actions[i].id).checked = Replay.actions[i].checked;
+                    Replay.actions[i].ran = true;
                 }
                 i++;
             }
