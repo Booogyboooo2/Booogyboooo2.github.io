@@ -20,17 +20,19 @@ class Game {
         var elem = document.getElementById("game");
         var i = 0;
         var e = 0;
-        console.log("height:" + this.height)
-        console.log("width:" + this.width)
+        console.log("height: " + h);
+        console.log("width: " + w);
         while (i < h) {
-            while (e <= w) {
+            while (e < w) {
                 elem.innerHTML += "<input id='" + i + "_" + e + "' type='checkbox'>" ;
                 document.getElementById(i + "_" + e).addEventListener("click", createAction(i + "_" + e, document.getElementById(i + "_" + e).checked, new Date().getTime()));
                 e++;
+                console.log("w+")
             }
             elem.innerHTML += "<br>";
             e = 0;
             i++;
+            console.log("h+")
         }
         document.getElementById("buttons").innerHTML = "<button onclick='replay()'>Replay</button>";
     }
