@@ -53,6 +53,9 @@ class GooseV2 {
         this.mouseX = 0;
         this.mouseY = 0;
         this.isChasing = false;
+        this.__getGoose = function () {
+            return this;
+        }
     }
     
     getX() {
@@ -473,7 +476,8 @@ class MethodModif {
 
     static injectMethod(method, code) {
         try {
-            var prev = GooseV2.prototype[method].toString().replaceAll("\n", "").replaceAll(" ", "").replace(method + "(){", "").slice(0, -1).replaceAll("elseif", "else if");
+            var newThis = "this.bind(__getGoose())";
+            var prev = GooseV2.prototype[method].toString().replaceAll("\n", "").replaceAll(" ", "").replace(method + "(){", "").slice(0, -1).replaceAll("elseif", "else if").replaceAll("this", newThis);
             console.log(prev.toString());
             eval("GooseV2.prototype." + method + " = function () { " + prev + code + "}");
             console.log("Set code too: GooseV2.prototype." + method + " = function () { " + prev + code + "}");
