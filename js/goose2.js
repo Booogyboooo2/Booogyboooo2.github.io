@@ -1,3 +1,5 @@
+//Goose placeholder for modding - Only modding for most recent goose (Fix this)
+//Maybe use hashmap to determine dif betwen multiple gooses?
 var g = null;
 
 //This stupid goose is driving me insane
