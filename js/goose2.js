@@ -1,6 +1,10 @@
+const g = null;
+
 //This stupid goose is driving me insane
 class GooseV2 {
     constructor(name) {
+        g = this;
+        console.log(g);
         this.mods = [];
         this.exists = false;
         this.rawName = name;
@@ -476,7 +480,7 @@ class MethodModif {
 
     static injectMethod(method, code) {
         try {
-            var prev = GooseV2.prototype[method].toString().replaceAll("\n", "").replaceAll(" ", "").replace(method + "(){", "").slice(0, -1).replaceAll("elseif", "else if").replaceAll("this", "this.bind()");
+            var prev = GooseV2.prototype[method].toString().replaceAll("\n", "").replaceAll(" ", "").replace(method + "(){", "").slice(0, -1).replaceAll("elseif", "else if").replaceAll("this", "this.bind(g)");
             console.log(prev.toString());
             eval("GooseV2.prototype." + method + " = function () { " + prev + code + "}");
             console.log("Set code too: GooseV2.prototype." + method + " = function () { " + prev + code + "}");
