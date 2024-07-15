@@ -1,4 +1,4 @@
-const g = null;
+var g = null;
 
 //This stupid goose is driving me insane
 class GooseV2 {
